@@ -22,11 +22,3 @@ test:
   pool: 5
   username: dev
   password: 
-
-production:
-  adapter: postgresql
-  database: homehunter_production
-  encoding: unicode
-  pool: 5
-  username: homehunter
-  password:
