@@ -12,3 +12,6 @@ Feature: User Signup
     Given I do not have an account
     And I visit the site
     Then I should be able to signup
+    When I enter in my information 
+    And create my account
+    Then I should recieve an email

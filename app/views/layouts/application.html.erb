@@ -1,14 +1,47 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Homehunter</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>HomeHunter</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+  </head>
+  <body>
 
-<%= yield %>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <%= link_to "HomeHunter", root_path, :class => :brand %>
+          <div class="container-fluid nav-collapse">
+            <ul class="nav">
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 
-</body>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="well span9">
+          <%= yield %>
+        </div>
+        <div class="well span3">
+        </div>
+      </div><!--/row-->
+
+      <footer>
+        <p>&copy; Copyright 2012</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Javascripts -->
+    <%= javascript_include_tag "application" %>
+
+  </body>
 </html>
