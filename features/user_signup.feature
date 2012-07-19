@@ -12,20 +12,19 @@ Feature: User Signup
     Given I do not have an account
     And I visit the site
     Then I should be able to signup
-    When I enter in my information
-    Then I should now have an account
 
   Scenario: Existing users should be able to login
     Given I am a valid user
     And I visit the logon page
     Then I should be able to login
-    And be displayed with the logon message
 
   Scenario: Users should be able to log out
+    Given I am a valid user
     Given I logged in
     Then I should be able to logout
-    
+
   Scenario: Users Should be able to edit their account
+    Given I am a valid user
     Given I logged in
     Then I should be able to edit my account
 

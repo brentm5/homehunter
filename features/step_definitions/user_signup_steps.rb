@@ -2,12 +2,6 @@ begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations
 require 'cucumber/formatter/unicode'
 $:.unshift(File.dirname(__FILE__) + '/../../lib')
 
-Before do
-end
-
-After do
-end
-
 Given /^I do not have an account$/ do
   #Do not know how to verify this
 end
@@ -23,22 +17,16 @@ end
 Then /^I should be able to signup$/ do
   page.should have_content('Sign Up')
   click_link 'Sign Up'
-end
-
-When /^I enter in my information$/ do
   fill_in 'user_email', :with => 'Username@example.com'
   fill_in 'user_password', :with => 'password'
   fill_in 'user_password_confirmation', :with => 'password'
   click_button 'Sign up'
-end
-
-Then /^I should now have an account$/ do
   page.should have_content 'username@example.com'
   page.should have_content 'Log Off'
 end
 
 Given /^I am a valid user$/ do
-  FactoryGirl.create(:user)
+  create_user 'test@email.com', 'password'
 end
 
 Given /^I visit the logon page$/ do
@@ -49,9 +37,6 @@ Then /^I should be able to login$/ do
   fill_in 'user_email', :with => 'test@email.com'
   fill_in 'user_password', :with => 'password'
   click_button 'Sign in'
-end
-
-Then /^be displayed with the logon message$/ do
   page.should have_content 'test@email.com'
   page.should have_content 'Log Off'
 end
@@ -72,11 +57,14 @@ Then /^I should be able to edit my account$/ do
   page.should have_content 'Cancel my account'
 end
 
+def create_user(email, password)
+  FactoryGirl.create(:user, :email => email, :password => password, :password_confirmation => password)
+end
 
-def log_in_as(username, password)
-  FactoryGirl.create(:user, :email => username, :password => password, :password_confirmation => password)
+
+def log_in_as(email, password)
   visit user_session_path
-  fill_in 'user_email', :with => username
+  fill_in 'user_email', :with => email
   fill_in 'user_password', :with => password
   click_button 'Sign in'
 end
