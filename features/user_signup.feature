@@ -19,12 +19,10 @@ Feature: User Signup
     Then I should be able to login
 
   Scenario: Users should be able to log out
-    Given I am a valid user
     Given I logged in
     Then I should be able to logout
 
   Scenario: Users Should be able to edit their account
-    Given I am a valid user
     Given I logged in
     Then I should be able to edit my account
 

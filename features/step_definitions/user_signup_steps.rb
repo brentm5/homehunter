@@ -42,6 +42,7 @@ Then /^I should be able to login$/ do
 end
 
 Given /^I logged in$/ do
+  create_user 'test@email.com', 'password'
   log_in_as 'test@email.com', 'password'
 end
 
@@ -58,7 +59,7 @@ Then /^I should be able to edit my account$/ do
 end
 
 def create_user(email, password)
-  FactoryGirl.create(:user, :email => email, :password => password, :password_confirmation => password)
+  create(:user, :email => email, :password => password, :password_confirmation => password)
 end
 
 
