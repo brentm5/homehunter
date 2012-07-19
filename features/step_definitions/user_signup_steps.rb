@@ -33,12 +33,12 @@ When /^I enter in my information$/ do
 end
 
 Then /^I should now have an account$/ do
-  page.should have_content 'Welcome! You have signed up successfully.'
+  page.should have_content 'username@example.com'
+  page.should have_content 'Log Off'
 end
 
 Given /^I am a valid user$/ do
-  user_attr = FactoryGirl.attributes_for(:user)
-  User.create!(user_attr)
+  FactoryGirl.create(:user)
 end
 
 Given /^I visit the logon page$/ do
@@ -52,5 +52,32 @@ Then /^I should be able to login$/ do
 end
 
 Then /^be displayed with the logon message$/ do
-  page.should have_content 'Signed in successfully'
+  page.should have_content 'test@email.com'
+  page.should have_content 'Log Off'
 end
+
+Given /^I logged in$/ do
+  log_in_as 'test@email.com', 'password'
+end
+
+Then /^I should be able to logout$/ do
+  page.should have_content 'Log Off'
+  click_link 'Log Off'
+  page.should have_content 'Log In'
+end
+
+Then /^I should be able to edit my account$/ do
+  page.should have_content 'Edit Account'
+  click_link 'Edit Account'
+  page.should have_content 'Cancel my account'
+end
+
+
+def log_in_as(username, password)
+  FactoryGirl.create(:user, :email => username, :password => password, :password_confirmation => password)
+  visit user_session_path
+  fill_in 'user_email', :with => username
+  fill_in 'user_password', :with => password
+  click_button 'Sign in'
+end
+

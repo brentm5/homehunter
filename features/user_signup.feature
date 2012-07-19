@@ -20,3 +20,12 @@ Feature: User Signup
     And I visit the logon page
     Then I should be able to login
     And be displayed with the logon message
+
+  Scenario: Users should be able to log out
+    Given I logged in
+    Then I should be able to logout
+    
+  Scenario: Users Should be able to edit their account
+    Given I logged in
+    Then I should be able to edit my account
+
