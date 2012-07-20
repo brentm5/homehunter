@@ -193,6 +193,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   factory_girl_rails
+  guard
   guard-rails
   guard-spork
   jquery-rails
