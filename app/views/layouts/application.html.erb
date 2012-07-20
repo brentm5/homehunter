@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Homehunter</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>HomeHunter</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+  </head>
+  <body>
 
-<%= yield %>
+    <%= render 'layouts/main_nav' %>
 
-</body>
+    <%= render 'layouts/main_content' %>
+
+    <!-- Javascripts -->
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>
