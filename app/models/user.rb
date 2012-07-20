@@ -3,4 +3,10 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :presence => true
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me
 
+
+  #Custom Methods
+  def name 
+    "#{first_name} #{last_name}" 
+  end
+
 end
