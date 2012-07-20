@@ -17,6 +17,8 @@ end
 Then /^I should be able to signup$/ do
   page.should have_content('Sign Up')
   click_link 'Sign Up'
+  fill_in 'user_first_name', :with => 'John'
+  fill_in 'user_last_name', :with => 'Doe'
   fill_in 'user_email', :with => 'Username@example.com'
   fill_in 'user_password', :with => 'password'
   fill_in 'user_password_confirmation', :with => 'password'
@@ -26,7 +28,7 @@ Then /^I should be able to signup$/ do
 end
 
 Given /^I am a valid user$/ do
-  create_user 'test@email.com', 'password'
+  create(:user, :email => 'test@email.com', :password => 'password', :password_confirmation => 'password')
 end
 
 Given /^I visit the logon page$/ do
@@ -42,7 +44,7 @@ Then /^I should be able to login$/ do
 end
 
 Given /^I logged in$/ do
-  create_user 'test@email.com', 'password'
+  create(:user, :email => 'test@email.com', :password => 'password', :password_confirmation => 'password')
   log_in_as 'test@email.com', 'password'
 end
 
@@ -57,11 +59,6 @@ Then /^I should be able to edit my account$/ do
   click_link 'Edit Account'
   page.should have_content 'Cancel my account'
 end
-
-def create_user(email, password)
-  create(:user, :email => email, :password => password, :password_confirmation => password)
-end
-
 
 def log_in_as(email, password)
   visit user_session_path
