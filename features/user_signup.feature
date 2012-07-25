@@ -6,9 +6,24 @@ Feature: User Signup
   Scenario: New users should see a welcome page 
     Given I do not have an account
     And I visit the site
+
+  Scenario: New users should see a welcome page
+    Given I do not have an account
     Then I should see the welcome page
 
   Scenario: New users should be able to signup
     Given I do not have an account
-    And I visit the site
     Then I should be able to signup
+    Then I should be able to signup
+
+  Scenario: Existing users should be able to login
+    Given I am a valid user
+    Then I should be able to login
+
+  Scenario: Users should be able to log out
+    Given I logged in
+    Then I should be able to logout
+
+  Scenario: Users Should be able to edit their account
+    Given I logged in
+    Then I should be able to edit my account

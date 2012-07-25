@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="well span9">
+      <%= yield %>
+    </div>
+
+    <div class="well span3">
+      <% if user_signed_in? %>
+        <h3>User Actions</h3>
+      <% else%>
+        <%= link_to "Sign Up", new_user_registration_path %>
+      <% end  %>
+    </div>
+  </div><!--/row-->
+
+  <footer>
+  <p>&copy; Copyright 2012</p>
+  </footer>
+
+</div> <!-- /container -->
