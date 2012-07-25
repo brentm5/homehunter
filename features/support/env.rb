@@ -35,7 +35,7 @@ Spork.each_run do
   # 2) Set the value below to true. Beware that doing this globally is not
   # recommended as it will mask a lot of errors for you!
   #
-  ActionController::Base.allow_rescue = false
+   ActionController::Base.allow_rescue = false
   
   # Remove/comment out the lines below if your app doesn't have a database.
   # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
@@ -63,6 +63,6 @@ Spork.each_run do
   # Possible values are :truncation and :transaction
   # The :transaction strategy is faster, but might give you threading problems.
   # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
-  Cucumber::Rails::Database.javascript_strategy = :truncation
+    Cucumber::Rails::Database.javascript_strategy = :truncation
 
 end
