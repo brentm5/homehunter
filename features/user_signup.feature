@@ -3,17 +3,12 @@ Feature: User Signup
   As a new user
   I want to be able to signup
 
-  Scenario: New users should see a welcome page 
-    Given I do not have an account
-    And I visit the site
-
   Scenario: New users should see a welcome page
     Given I do not have an account
     Then I should see the welcome page
 
   Scenario: New users should be able to signup
     Given I do not have an account
-    Then I should be able to signup
     Then I should be able to signup
 
   Scenario: Existing users should be able to login
