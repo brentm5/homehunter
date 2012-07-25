@@ -6,15 +6,13 @@ Given /^I do not have an account$/ do
   #Do not know how to verify this
 end
 
-Given /^I visit the site$/ do
-   visit(root_url)
-end
-
 Then /^I should see the welcome page$/ do
+  visit(root_url)
   page.should have_content('Welcome to HomeHunter')
 end
 
 Then /^I should be able to signup$/ do
+  visit(root_url)
   page.should have_content('Sign Up')
   click_link 'Sign Up'
   fill_in 'user_first_name', :with => 'John'
@@ -31,11 +29,8 @@ Given /^I am a valid user$/ do
   create(:user, :email => 'test@email.com', :password => 'password', :password_confirmation => 'password')
 end
 
-Given /^I visit the logon page$/ do
-  visit user_session_path
-end
-
 Then /^I should be able to login$/ do
+  visit user_session_path
   fill_in 'user_email', :with => 'test@email.com'
   fill_in 'user_password', :with => 'password'
   click_button 'Sign in'
