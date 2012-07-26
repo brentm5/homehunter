@@ -1,7 +1,3 @@
-begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end 
-require 'cucumber/formatter/unicode'
-$:.unshift(File.dirname(__FILE__) + '/../../lib')
-
 Given /^I do not have an account$/ do
   #Do not know how to verify this
 end

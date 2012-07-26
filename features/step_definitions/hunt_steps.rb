@@ -1,7 +1,3 @@
-begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end 
-require 'cucumber/formatter/unicode'
-$:.unshift(File.dirname(__FILE__) + '/../../lib')
-
 Then /^I should be able to create a hunt$/ do
   visit(new_hunt_url)
   hunt = build(:hunt)
