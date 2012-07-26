@@ -4,12 +4,12 @@ end
 
 Then /^I should see the welcome page$/ do
   visit(root_url)
-  page.should have_content('Welcome to HomeHunter')
+  page.should have_content 'Welcome to HomeHunter'
 end
 
 Then /^I should be able to signup$/ do
   visit(root_url)
-  page.should have_content('Sign Up')
+  page.should have_content 'Sign Up'
   click_link 'Sign Up'
   fill_in 'user_first_name', :with => 'John'
   fill_in 'user_last_name', :with => 'Doe'

@@ -5,6 +5,14 @@ class HuntsController < ApplicationController
 
   def create
     @hunt = Hunt.new(params[:hunt])
-    render :action  => :new
+    if @hunt.save
+      redirect_to @hunt
+    else
+      render :action => :new
+    end
+  end
+
+  def show
+    @hunt = Hunt.find_by_id(params[:id])
   end
 end
