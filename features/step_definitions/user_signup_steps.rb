@@ -19,6 +19,7 @@ Then /^I should be able to signup$/ do
   click_button 'Sign up'
   page.should have_content 'username@example.com'
   page.should have_content 'Log Off'
+  page.should have_content 'Start a Hunt'
 end
 
 Given /^I am a valid user$/ do
